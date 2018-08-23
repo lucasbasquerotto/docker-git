@@ -4,7 +4,7 @@ A useful simple git container running in alpine Linux, especially for tiny Linux
 
 [![DockerHub Badge](http://dockeri.co/image/lucasbasquerotto/git)](https://hub.docker.com/r/lucasbasquerotto/git/)
 
-### usage
+### Usage
 
     docker run -ti --rm -v ${HOME}:/root -v $(pwd):/git lucasbasquerotto/git <git_command>
 
@@ -14,19 +14,18 @@ For example, if you need clone this repository, you can run
     
 ### Optional usage 1:
 
-To save your type, add this fuction to `~/.bashrc` or `~/.profile`
-    
-    $ cat ~/.profile
-    
-    ...
-    
-    function git () {
-        (docker run -ti --rm -v ${HOME}:/root -v $(pwd):/git lucasbasquerotto/git "$@")
-    }
-    
-    ...
-    
-    $ source ~/.profile
+To save your type, create a `git` file in `~/bin/` with the following code:
+
+```bash
+#!/bin/sh
+
+set -e
+
+echo "git running inside docker at ~/bin/git"
+docker run -ti --rm --user $(id -u):$(id -g) -v ${HOME}:/root -v $(pwd):/git lucasbasquerotto/git "$@"
+```
+
+(Make sure that `~/bin` is in your `PATH`)
 
 for example, if you need clone this repository, with the function you just set, you can run it as local command
 
