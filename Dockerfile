@@ -1,6 +1,6 @@
-FROM alpine
+FROM lucasbasquerotto/base
 
-LABEL maintainer Bill Wang <ozbillwang@gmail.com>
+LABEL maintainer Lucas Basquerotto
 
 RUN apk --update add git openssh && \
     rm -rf /var/lib/apt/lists/* && \
