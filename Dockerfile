@@ -1,4 +1,4 @@
-FROM lucasbasquerotto/base
+FROM alpine
 
 LABEL maintainer Lucas Basquerotto
 
@@ -12,5 +12,5 @@ RUN  chmod u+x git-entrypoint.sh
 VOLUME /git
 WORKDIR /git
 
-ENTRYPOINT ["/git-entrypoint.sh"]
+ENTRYPOINT ["git"]
 CMD ["--help"]
