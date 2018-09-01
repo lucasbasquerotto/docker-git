@@ -22,7 +22,7 @@ To save your type, create a `git` file in `~/bin/` with the following code:
 set -e
 
 echo "git running inside docker at ~/bin/git"
-docker run -ti --rm --user $(id -u):$(id -g) -v ${HOME}:/root -v $(pwd):/git lucasbasquerotto/git "$@"
+docker run -it --rm -v ${HOME}:/root -v $(pwd):/git lucasbasquerotto/git "$@"
 ```
 
 (Make sure that `~/bin` is in your `PATH`)
